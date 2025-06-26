@@ -46,6 +46,52 @@ class _HomeSettingPageState extends State<HomeSettingPage> {
                 surfaceTintColor: appWhite,
                 color: appWhite,
                 child: ListTile(
+                  onTap: () {},
+                  leading: Icon(
+                    Icons.edit_outlined,
+                    color: appBlack,
+                  ),
+                  title: Text(
+                    "Modifier la cagnotte",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.navigate_next_outlined,
+                    color: appBlack,
+                  ),
+                ),
+              ),
+              Card(
+                surfaceTintColor: appWhite,
+                color: appWhite,
+                child: ListTile(
+                  onTap: () {},
+                  leading: Icon(
+                    Icons.person_add_alt_1_outlined,
+                    color: appBlack,
+                  ),
+                  title: Text(
+                    "Désigner un sous admin",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.navigate_next_outlined,
+                    color: appBlack,
+                  ),
+                ),
+              ),
+              Card(
+                surfaceTintColor: appWhite,
+                color: appWhite,
+                child: ListTile(
                   onTap: () {
                     showModalBottomSheet<void>(
                       context: context,
@@ -121,11 +167,11 @@ class _HomeSettingPageState extends State<HomeSettingPage> {
                     );
                   },
                   leading: Icon(
-                    Icons.logout_outlined,
+                    Icons.delete_forever_outlined,
                     color: Colors.red,
                   ),
                   title: Text(
-                    "Supprimer la cotisation",
+                    "Supprimer la cagnotte",
                     style: TextStyle(
                       color: Colors.red,
                       fontSize: 15.sp,

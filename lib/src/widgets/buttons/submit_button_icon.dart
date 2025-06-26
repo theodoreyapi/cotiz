@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../themes/themes.dart';
 
-class SubmitButton extends StatelessWidget {
+class SubmitButtonIcon extends StatelessWidget {
   final String title;
   final Function() onPressed;
   final double? height;
@@ -11,8 +12,12 @@ class SubmitButton extends StatelessWidget {
   final double? fontSize;
   final Color? couleur;
   final Color? textcouleur;
+  final Color? colorIcon;
+  final String? icone;
+  final double? heightSvg;
+  final double? widthSvg;
 
-  const SubmitButton(
+  const SubmitButtonIcon(
     this.title, {
     super.key,
     required this.onPressed,
@@ -21,15 +26,25 @@ class SubmitButton extends StatelessWidget {
     this.couleur,
     this.width,
     this.textcouleur,
+    this.colorIcon,
+    this.heightSvg,
+    this.widthSvg,
+    this.icone,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width ?? double.infinity,
-      height: height ?? 14.w,
+      height: height ?? 13.w,
       padding: EdgeInsets.symmetric(horizontal: 1.w),
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
+        icon: SvgPicture.asset(
+          icone!,
+          height: heightSvg ?? 5.w,
+          width: widthSvg ?? 5.w,
+          colorFilter: ColorFilter.mode(colorIcon ?? appColor, BlendMode.srcIn),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: couleur ?? appColor,
           shape: RoundedRectangleBorder(
@@ -37,10 +52,10 @@ class SubmitButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Text(
+        label: Text(
           title,
           style: TextStyle(
-            fontSize: fontSize ?? 18.sp,
+            fontSize: fontSize ?? 17.sp,
             color: textcouleur ?? appWhite,
             fontWeight: FontWeight.normal,
           ),

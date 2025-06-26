@@ -35,20 +35,6 @@ class _MenuPageState extends State<MenuPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => QrScannePage(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.qr_code_scanner_outlined,
-              size: 30,
-            ),
-          ),
-          IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.help_outline_outlined,
