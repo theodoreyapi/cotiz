@@ -9,6 +9,8 @@ class AppConstants {
   static const btnValid = "Valider";
   static const btnContinue = "Continuer";
   static const btnCancel = "Annuler";
+  static const btnFinance = "Financer";
+  static const btnRefus = "Refuser";
   static const btnBack = "Retour";
   static const btnSetup = "Suivant";
   static const btnYes = "Oui";
@@ -20,10 +22,13 @@ class AppConstants {
   static const btnTrans = "Transférer";
   static const btnDelete = "Supprimer";
   static const btnReceive = "Recharger";
+  static const btnCashIn = "Déposer";
+  static const btnCashOut = "Retirer";
   static const btnSend = "Envoyer";
   static const btnCreateCagnotte = "Créer une nouvelle cagnotte";
   static const btnCreatePret = "Demander un prêt";
   static const btnCreateCagne = "Créer la cagnotte";
+  static const btnSubmitPret = "Soumettre ma demande";
   static const btnShare = "Partager";
   static const btnPerson = "Ajouter un participant";
   static const txtLoren =

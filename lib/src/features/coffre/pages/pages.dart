@@ -1,0 +1,1 @@
+export 'coffre_page.dart';

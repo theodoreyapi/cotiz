@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -252,14 +253,76 @@ class _CreatePretPageState extends State<CreatePretPage> {
                     suffixIcon: Icon(Icons.contact_phone_outlined),
                   ),
                   Gap(2.h),
-                  Text("Visibilité"),
                   Container(
+                    padding: EdgeInsets.all(3.w),
                     decoration: BoxDecoration(
                       color: appColor.withValues(alpha: .08),
                       borderRadius: BorderRadius.circular(3.w),
                     ),
                     child: Column(
-                      children: [],
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset("assets/svg/garentie.svg"),
+                            Gap(1.w),
+                            Text(
+                              "Garanties",
+                              style: TextStyle(
+                                color: appBlack,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Gap(1.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Score de crédit estimé",
+                              style: TextStyle(
+                                color: appBlack,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            Gap(1.w),
+                            Text(
+                              "Exellent",
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Gap(1.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Niveau de risque",
+                              style: TextStyle(
+                                color: appBlack,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            Gap(1.w),
+                            Text(
+                              "A+",
+                              style: TextStyle(
+                                color: appColor,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -271,7 +334,7 @@ class _CreatePretPageState extends State<CreatePretPage> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(4.w),
         child: SubmitButton(
-          AppConstants.btnCreateCagne,
+          AppConstants.btnSubmitPret,
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
             } else {
