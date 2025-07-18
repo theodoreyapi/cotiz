@@ -47,7 +47,7 @@ class _SplashPageState extends State<SplashPage> {
         ),
       );
     } else {
-     Navigator.of(context).pushReplacement(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const IntroPage(),
         ),
@@ -64,7 +64,7 @@ class _SplashPageState extends State<SplashPage> {
           AppConstants.appName,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: appWhite,
+            color: appBlack,
             fontSize: 30.sp,
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.normal,

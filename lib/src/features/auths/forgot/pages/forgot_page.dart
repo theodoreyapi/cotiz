@@ -51,7 +51,7 @@ class _ForgotPageState extends State<ForgotPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appColor,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
@@ -59,38 +59,38 @@ class _ForgotPageState extends State<ForgotPage> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: FloatingActionButton.small(
+                    child: FloatingActionButton(
                       heroTag: 'back',
-                      shape: CircleBorder(),
+                      elevation: 0,
                       onPressed: () => Navigator.pop(context),
                       backgroundColor: appWhite,
                       foregroundColor: appWhite,
                       child: Icon(
                         Icons.arrow_back_outlined,
-                        color: appColor,
+                        color: appBlack,
                       ),
                     ),
                   ),
                   Gap(2.h),
                   Text(
                     AppConstants.appName,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 30.sp,
                     ),
                   ),
                   Text(
                     "Mot de passe oublié",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.sp,
                     ),
@@ -99,9 +99,9 @@ class _ForgotPageState extends State<ForgotPage> {
                     "Entrez votre adresse e-mail qui est associé a votre "
                     "compte et vous receverai un mail pour "
                     "réinitialisation de mot de passe.",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appGrey,
                       fontWeight: FontWeight.normal,
                       fontSize: 15.sp,
                     ),

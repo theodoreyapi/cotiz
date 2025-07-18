@@ -74,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appColor,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
@@ -82,23 +82,23 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     AppConstants.appName,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 30.sp,
                     ),
                   ),
                   Text(
                     "Création de compte",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.sp,
                     ),

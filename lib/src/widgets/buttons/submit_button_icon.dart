@@ -36,8 +36,7 @@ class SubmitButtonIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width ?? double.infinity,
-      height: height ?? 13.w,
-      padding: EdgeInsets.symmetric(horizontal: 1.w),
+      height: height ?? 12.w,
       child: ElevatedButton.icon(
         icon: SvgPicture.asset(
           icone!,
@@ -48,7 +47,7 @@ class SubmitButtonIcon extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: couleur ?? appColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(3.w),
+            borderRadius: BorderRadius.circular(10.w),
           ),
         ),
         onPressed: onPressed,

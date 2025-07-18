@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appColor,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
@@ -63,23 +63,23 @@ class _LoginPageState extends State<LoginPage> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     AppConstants.appName,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 30.sp,
                     ),
                   ),
                   Text(
                     "Connexion a votre compte",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.sp,
                     ),
@@ -191,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                                     "Mot de passe oublié?",
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
-                                      color: appColor,
+                                      color: appColorSecond,
                                       fontWeight: FontWeight.normal,
                                       fontSize: 15,
                                     ),
@@ -232,7 +232,7 @@ class _LoginPageState extends State<LoginPage> {
                                     "Vous n'avez pas de compte? S'enregistrer",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: appColor,
+                                      color: appBlack,
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.normal,
                                       fontSize: 15,

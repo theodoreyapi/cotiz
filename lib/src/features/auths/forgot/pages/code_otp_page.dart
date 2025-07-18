@@ -67,7 +67,7 @@ class _CodeOtpPageState extends State<CodeOtpPage> {
     );
 
     return Scaffold(
-      backgroundColor: appColor,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
@@ -75,47 +75,47 @@ class _CodeOtpPageState extends State<CodeOtpPage> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: FloatingActionButton.small(
+                    child: FloatingActionButton(
                       heroTag: 'back',
-                      shape: CircleBorder(),
+                      elevation: 0,
                       onPressed: () => Navigator.pop(context),
                       backgroundColor: appWhite,
                       foregroundColor: appWhite,
                       child: Icon(
                         Icons.arrow_back_outlined,
-                        color: appColor,
+                        color: appBlack,
                       ),
                     ),
                   ),
                   Gap(2.h),
                   Text(
                     AppConstants.appName,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 30.sp,
                     ),
                   ),
                   Text(
                     "Code OTP",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.sp,
                     ),
                   ),
                   Text(
                     "Veuillez saisir le code que vous avez reçu sur le numéro saisi",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: appWhite,
+                      color: appGrey,
                       fontWeight: FontWeight.normal,
                       fontSize: 15.sp,
                     ),
@@ -129,10 +129,11 @@ class _CodeOtpPageState extends State<CodeOtpPage> {
                           color: appWhite.withValues(alpha: .6),
                         ),
                         child: Padding(
-                            padding: EdgeInsets.all(3.w),
-                            child: Container(
-                              height: 10.h,
-                            )),
+                          padding: EdgeInsets.all(3.w),
+                          child: Container(
+                            height: 10.h,
+                          ),
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 3.w),
@@ -154,10 +155,14 @@ class _CodeOtpPageState extends State<CodeOtpPage> {
                                   submittedPinTheme: submittedPinTheme,
                                   controller: pinController,
                                   validator: (s) {
-                                    return s == '2222' ? null : "Le code n'est pas valide";
+                                    return s == '2222'
+                                        ? null
+                                        : "Le code n'est pas valide";
                                   },
-                                  pinputAutovalidateMode: PinputAutovalidateMode.disabled,
-                                  hapticFeedbackType: HapticFeedbackType.lightImpact,
+                                  pinputAutovalidateMode:
+                                      PinputAutovalidateMode.disabled,
+                                  hapticFeedbackType:
+                                      HapticFeedbackType.lightImpact,
                                   showCursor: true,
                                   onCompleted: (pin) => print(pin),
                                   onChanged: (value) => print(value),
@@ -206,7 +211,8 @@ class _CodeOtpPageState extends State<CodeOtpPage> {
                                       ),
                                     );
                                   } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(_snackBar);
                                   }
                                 },
                               ),

@@ -31,6 +31,9 @@ class AppConstants {
   static const btnSubmitPret = "Soumettre ma demande";
   static const btnShare = "Partager";
   static const btnPerson = "Ajouter un participant";
+  static const btnRefer = "Recevoir 500 Fcfa";
+  static const btnShareFriend = "Partager avec un ami";
+  static const btnGoal = "Nouvel objectif";
   static const txtLoren =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "

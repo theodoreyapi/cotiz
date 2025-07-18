@@ -24,187 +24,186 @@ class _IntroPageState extends State<IntroPage> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(3.w),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppConstants.appName,
-                  style: TextStyle(
-                    color: appBlack,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.sp,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                AppConstants.appName,
+                style: TextStyle(
+                  color: appBlack,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.sp,
+                ),
+              ),
+              Text(
+                "L'application qui connecte des personnes",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16.sp,
+                ),
+              ),
+              Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: ListTile(
+                  leading: SvgPicture.asset("assets/svg/wallett.svg"),
+                  title: Text(
+                    "Gestion simplifiée",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "Gérer votre argent facilement avec notre interface intuitive et simplifiée",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.sp,
+                    ),
                   ),
                 ),
-                Text(
-                  "L'app qui connecte des personnes",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16.sp,
+              ),
+              Gap(2.h),
+              Container(
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: ListTile(
+                  leading: SvgPicture.asset("assets/svg/transaction.svg"),
+                  title: Text(
+                    "Transaction",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "Envoyez et recevez de l'argent en temps réel",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.sp,
+                    ),
                   ),
                 ),
-                Gap(2.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
+              ),
+              Gap(2.h),
+              Container(
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: ListTile(
+                  leading: SvgPicture.asset("assets/svg/pret.svg"),
+                  title: Text(
+                    "Prêt entre particuliers",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
                   ),
-                  child: ListTile(
-                    leading: SvgPicture.asset("assets/svg/wallett.svg"),
-                    title: Text(
-                      "Gestion simplifiée",
+                  subtitle: Text(
+                    "Empruntez ou prêtez de l'argent en toute sécurité",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ),
+              ),
+              Gap(2.h),
+              Container(
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: ListTile(
+                  leading: SvgPicture.asset("assets/svg/pret.svg"),
+                  title: Text(
+                    "Cagnotte",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "Commencez à collecter facilement",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ),
+              ),
+              Spacer(),
+              /* Gap(2.h),
+              Container(
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: ListTile(
+                  leading: SvgPicture.asset("assets/svg/projet.svg"),
+                  title: Text(
+                    "Financement de projets",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "Participez au financement de projets innovants",
+                    style: TextStyle(
+                      color: appColorText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ),
+              ),
+             Gap(2.h),
+              Container(
+                padding: EdgeInsets.all(3.w),
+                decoration: BoxDecoration(
+                  color: appColorFond,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sécurité garantie",
                       style: TextStyle(
                         color: appColorText,
                         fontWeight: FontWeight.bold,
                         fontSize: 18.sp,
                       ),
                     ),
-                    subtitle: Text(
-                      "Gérer votre argent facilement avec notre interface intuitive et simplifiée",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
+                    Gap(1.h),
+                    BulletPoint(text: 'Authentification forte'),
+                    BulletPoint(text: 'Transactions cryptées'),
+                    BulletPoint(text: 'Protection des données'),
+                    BulletPoint(text: 'Conformité RGPD'),
+                  ],
                 ),
-                Gap(2.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
-                  ),
-                  child: ListTile(
-                    leading: SvgPicture.asset("assets/svg/transaction.svg"),
-                    title: Text(
-                      "Transaction",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "Envoyez et recevez de l'argent en temps réel",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
-                ),
-                Gap(2.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
-                  ),
-                  child: ListTile(
-                    leading: SvgPicture.asset("assets/svg/pret.svg"),
-                    title: Text(
-                      "Prêt entre particuliers",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "Empruntez ou prêtez de l'argent en toute sécurité",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
-                ),
-                Gap(2.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
-                  ),
-                  child: ListTile(
-                    leading: SvgPicture.asset("assets/svg/pret.svg"),
-                    title: Text(
-                      "Cagnotte",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "Commencez à collecter facilement",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
-                ),
-                Gap(2.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
-                  ),
-                  child: ListTile(
-                    leading: SvgPicture.asset("assets/svg/projet.svg"),
-                    title: Text(
-                      "Financement de projets",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "Participez au financement de projets innovants",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ),
-                ),
-                Gap(2.h),
-                Container(
-                  padding: EdgeInsets.all(3.w),
-                  decoration: BoxDecoration(
-                    color: appColorFond,
-                    borderRadius: BorderRadius.circular(3.w),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Sécurité garantie",
-                        style: TextStyle(
-                          color: appColorText,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
-                        ),
-                      ),
-                      Gap(1.h),
-                      BulletPoint(text: 'Authentification forte'),
-                      BulletPoint(text: 'Transactions cryptées'),
-                      BulletPoint(text: 'Protection des données'),
-                      BulletPoint(text: 'Conformité RGPD'),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),*/
+            ],
           ),
         ),
       ),
@@ -216,7 +215,6 @@ class _IntroPageState extends State<IntroPage> {
             Expanded(
               child: SubmitButton(
                 AppConstants.btnRegister,
-                fontSize: 15.sp,
                 onPressed: () async {
                   Navigator.push(
                     context,
@@ -227,10 +225,10 @@ class _IntroPageState extends State<IntroPage> {
                 },
               ),
             ),
+            Gap(2.w),
             Expanded(
               child: CancelButton(
                 AppConstants.btnLogin,
-                fontSize: 15.sp,
                 onPressed: () async {
                   Navigator.push(
                     context,
