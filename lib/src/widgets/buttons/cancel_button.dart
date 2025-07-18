@@ -29,7 +29,7 @@ class CancelButton extends StatelessWidget {
           backgroundColor: appWhite,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.w),
-            side: BorderSide(color: appColor),
+            side: BorderSide(color: appBlack),
           ),
         ),
         onPressed: onPressed,
@@ -37,7 +37,7 @@ class CancelButton extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: fontSize ?? 18.sp,
-            color: appColor,
+            color: appBlack,
             fontWeight: FontWeight.normal,
           ),
           textAlign: TextAlign.center,

@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../constants/constants.dart';
 import '../../../themes/themes.dart';
 import '../../../widgets/widgets.dart';
+import '../goal.dart';
 
 class GoalPage extends StatefulWidget {
   const GoalPage({super.key});
@@ -64,6 +65,7 @@ class _GoalPageState extends State<GoalPage> {
                     icone: "assets/svg/add.svg",
                     colorIcon: appWhite,
                     couleur: appBlack,
+                    textcouleur: appWhite,
                     onPressed: () async {},
                   ),
                 ),
@@ -93,6 +95,14 @@ class _GoalPageState extends State<GoalPage> {
                             horizontal: 8.0, vertical: 0.0),
                         minVerticalPadding: 0.0,
                         horizontalTitleGap: 8.0,
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsGoalPage(),
+                            ),
+                          );
+                        },
                         leading: Container(
                           padding: EdgeInsets.all(3.w),
                           decoration: BoxDecoration(
@@ -154,7 +164,7 @@ class _GoalPageState extends State<GoalPage> {
                               ),
                             ),
                           ],
-                        )
+                        ),
                       ),
                     ),
                     Gap(1.h),

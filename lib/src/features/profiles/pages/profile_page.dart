@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../themes/themes.dart';
+import '../profiles.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,12 +17,38 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  padding: EdgeInsets.all(4.w),
+                  decoration: BoxDecoration(
+                    color: appWhite,
+                    borderRadius: BorderRadius.circular(3.w),
+                  ),
+                  child: Icon(
+                    Icons.arrow_back_outlined,
+                    color: appBlack,
+                  ),
+                ),
+              ),
+              Gap(2.h),
+              Text(
+                "Paramètres",
+                style: TextStyle(
+                  color: appBlack,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                ),
+              ),
+              Gap(2.h),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.w),
@@ -65,215 +92,164 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      SizedBox(
-                        height: 9.h,
-                        width: 9.h,
-                        child: SfRadialGauge(
-                          axes: <RadialAxis>[
-                            RadialAxis(
-                              minimum: 0,
-                              maximum: 100,
-                              showLabels: false,
-                              showTicks: false,
-                              axisLineStyle: AxisLineStyle(
-                                thickness: 0.1,
-                                cornerStyle: CornerStyle.bothCurve,
-                                color: appColor.withValues(alpha: .12),
-                                thicknessUnit: GaugeSizeUnit.factor,
-                              ),
-                              pointers: <GaugePointer>[
-                                RangePointer(
-                                  value: 50,
-                                  cornerStyle: CornerStyle.bothCurve,
-                                  width: 0.1,
-                                  sizeUnit: GaugeSizeUnit.factor,
-                                  color: appColor,
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: ClipOval(
-                          child: Image.network(
-                            "https://img.freepik.com/psd-gratuit/illustration-3d-personne-lunettes-soleil_23-2149436188.jpg?semt=ais_hybrid",
-                            height: 7.h,
-                            width: 7.h,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Icon(Icons.image_not_supported);
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          padding: EdgeInsets.all(.5.w),
-                          decoration: BoxDecoration(
-                            color: appWhite,
-                            borderRadius: BorderRadius.circular(1.w),
-                          ),
-                          child: Text(
-                            "50%",
-                            style: TextStyle(
-                              color: appBlack,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13.sp,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Gap(2.w),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Yapi n'guessan kouassi théodore",
-                          style: TextStyle(
-                            color: appBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        Text(
-                          "+2250585831647",
-                          style: TextStyle(
-                            color: appBlack,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 13.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Gap(2.w),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.remove_red_eye_outlined,
-                      color: appColor,
-                      size: 18.sp,
-                    ),
-                  ),
-                ],
-              ),
-              Divider(),
               Gap(2.h),
               Expanded(
                 child: ListView(
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0.0),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
-                          "Modifier mot de passe",
+                          "Informations personnelles",
                           style: TextStyle(
                             color: appBlack,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.password_outlined,
-                          color: appColor,
+                        subtitle: Text(
+                          "Voir vos informations",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.person_outline,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0.0),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
-                          "Face ID",
+                          "Mot de passe",
                           style: TextStyle(
                             color: appBlack,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.face_outlined,
-                          color: appColor,
+                        subtitle: Text(
+                          "Modifier son mot de passe",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.password_outlined,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
-                        onTap: () {},
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0.0),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationSettingPage(),
+                            ),
+                          );
+                        },
                         title: Text(
-                          "Emprunte",
+                          "Notification",
                           style: TextStyle(
                             color: appBlack,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.fingerprint_outlined,
-                          color: appColor,
+                        subtitle: Text(
+                          "Recevoir des alertes sur tous les comptes",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
                           "Confidentialités & Frais",
@@ -283,27 +259,44 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.security_outlined,
-                          color: appColor,
+                        subtitle: Text(
+                          "Lire attentivement",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.security_outlined,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
                           "Termes & Conditions",
@@ -313,27 +306,44 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.privacy_tip_outlined,
-                          color: appColor,
+                        subtitle: Text(
+                          "Lire attentivement",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.privacy_tip_outlined,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
                           "Partager l'application",
@@ -343,27 +353,44 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.share,
-                          color: appColor,
+                        subtitle: Text(
+                          "Reçois 100 Fcfa par partage",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.share,
+                            color: appBlack,
+                          ),
                         ),
                         trailing: Icon(
                           Icons.navigate_next_outlined,
-                          color: appColor,
-                          size: 14.sp,
+                          color: appBlack,
                         ),
                       ),
                     ),
                     Gap(1.h),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: appColor.withValues(alpha: .12),
-                          width: 1.0,
-                        ),
+                        color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
                         onTap: () {},
                         title: Text(
                           "Se déconnecter",
@@ -373,14 +400,16 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        leading: Icon(
-                          Icons.logout,
-                          color: Colors.red,
-                        ),
-                        trailing: Icon(
-                          Icons.navigate_next_outlined,
-                          color: Colors.red,
-                          size: 14.sp,
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: Colors.red.withValues(alpha: .12),
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.logout,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                     ),

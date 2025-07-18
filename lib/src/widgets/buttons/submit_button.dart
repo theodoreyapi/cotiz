@@ -25,7 +25,7 @@ class SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? double.infinity,
       height: height ?? 12.w,
       child: ElevatedButton(
@@ -40,7 +40,7 @@ class SubmitButton extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: fontSize ?? 18.sp,
-            color: textcouleur ?? appWhite,
+            color: textcouleur ?? appBlack,
             fontWeight: FontWeight.normal,
           ),
           textAlign: TextAlign.center,

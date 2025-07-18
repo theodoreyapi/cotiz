@@ -47,18 +47,28 @@ class _MenuPageState extends State<MenuPage> {
                         child: FlutterLogo(),
                       ),
                       Spacer(),
-                      Container(
-                        padding: EdgeInsets.all(4.w),
-                        decoration: BoxDecoration(
-                          color: appWhite,
-                          borderRadius: BorderRadius.circular(3.w),
-                        ),
-                        child: Badge(
-                          label: Text('0'),
-                          backgroundColor: appBlack,
-                          child: Icon(
-                            Icons.notifications_none_outlined,
-                            color: appBlack,
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(4.w),
+                          decoration: BoxDecoration(
+                            color: appWhite,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Badge(
+                            label: Text('0'),
+                            backgroundColor: appBlack,
+                            child: Icon(
+                              Icons.notifications_none_outlined,
+                              color: appBlack,
+                            ),
                           ),
                         ),
                       ),
