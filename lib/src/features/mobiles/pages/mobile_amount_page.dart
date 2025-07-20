@@ -24,20 +24,46 @@ class _MobileAmountPageState extends State<MobileAmountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: appWhite,
-        title: Text("Transférer à ${widget.nom}"),
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
-          child: InputText(
-            hintText: "0",
-            colorFille: appWhite,
-            keyboardType: TextInputType.text,
-            controller: amount,
-            suffixIcon: Text("FCFA"),
-            validatorMessage: "Veuillez saisir le montant",
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Transférer à ${widget.nom}",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.close_outlined),
+                    ),
+                  ),
+                ],
+              ),
+              Gap(2.h),
+              InputText(
+                hintText: "0",
+                colorFille: appWhite,
+                keyboardType: TextInputType.number,
+                controller: amount,
+                suffixIcon: Text("FCFA"),
+                validatorMessage: "Veuillez saisir le montant",
+              ),
+            ],
           ),
         ),
       ),

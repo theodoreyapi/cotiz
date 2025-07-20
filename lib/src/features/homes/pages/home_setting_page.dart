@@ -3,6 +3,7 @@ import 'package:cotiz/src/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
+import 'package:super_tooltip/super_tooltip.dart';
 
 import '../../../widgets/widgets.dart';
 
@@ -14,84 +15,140 @@ class HomeSettingPage extends StatefulWidget {
 }
 
 class _HomeSettingPageState extends State<HomeSettingPage> {
+  final _controller = SuperTooltipController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: appWhite,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(3.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    AppConstants.txtLoren,
-                    style: TextStyle(
-                      color: appColor,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.normal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                      ),
+                      child: Icon(Icons.arrow_back_outlined),
                     ),
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () async {
+                      await _controller.showTooltip();
+                    },
+                    child: SuperTooltip(
+                      constraints: BoxConstraints(maxWidth: 350),
+                      shadowColor: appGrey,
+                      backgroundColor: appWhite,
+                      showDropBoxFilter: true,
+                      showBarrier: true,
+                      controller: _controller,
+                      content: Text(
+                        AppConstants.txtLoren,
+                        softWrap: true,
+                        style: TextStyle(
+                          color: appGrey,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(4.w),
+                        decoration: BoxDecoration(
+                          color: appWhite,
+                          borderRadius: BorderRadius.circular(3.w),
+                        ),
+                        child: Icon(
+                          Icons.info_outline,
+                          color: appBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
+              Gap(2.h),
+              Container(
+                margin: EdgeInsets.only(bottom: 1.h),
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
                 child: ListTile(
-                  onTap: () {},
-                  leading: Icon(
-                    Icons.edit_outlined,
-                    color: appBlack,
-                  ),
-                  title: Text(
-                    "Modifier la cagnotte",
-                    style: TextStyle(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  minVerticalPadding: 0.0,
+                  horizontalTitleGap: 8.0,
+                  leading: Container(
+                    padding: EdgeInsets.all(3.w),
+                    decoration: BoxDecoration(
+                      color: appColorFond,
+                      borderRadius: BorderRadius.circular(3.w),
+                    ),
+                    child: Icon(
+                      Icons.edit_outlined,
                       color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.normal,
                     ),
                   ),
+                  title: Text("Modifier la cagnotte"),
                   trailing: Icon(
                     Icons.navigate_next_outlined,
                     color: appBlack,
                   ),
                 ),
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
+              Container(
+                margin: EdgeInsets.only(bottom: 1.h),
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
                 child: ListTile(
-                  onTap: () {},
-                  leading: Icon(
-                    Icons.person_add_alt_1_outlined,
-                    color: appBlack,
-                  ),
-                  title: Text(
-                    "Désigner un sous admin",
-                    style: TextStyle(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  minVerticalPadding: 0.0,
+                  horizontalTitleGap: 8.0,
+                  leading: Container(
+                    padding: EdgeInsets.all(3.w),
+                    decoration: BoxDecoration(
+                      color: appColorFond,
+                      borderRadius: BorderRadius.circular(3.w),
+                    ),
+                    child: Icon(
+                      Icons.person_add_alt_1_outlined,
                       color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.normal,
                     ),
                   ),
+                  title: Text("Désigner un sous admin"),
                   trailing: Icon(
                     Icons.navigate_next_outlined,
                     color: appBlack,
                   ),
                 ),
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
+              Container(
+                margin: EdgeInsets.only(bottom: 1.h),
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
                 child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 0.0,
+                  ),
+                  minVerticalPadding: 0.0,
+                  horizontalTitleGap: 8.0,
                   onTap: () {
                     showModalBottomSheet<void>(
                       context: context,
@@ -128,7 +185,7 @@ class _HomeSettingPageState extends State<HomeSettingPage> {
                                     title: Text(
                                       "La suppression de la cotisation sera "
                                       "irréssible. S'il y'a encore de l'argent cotisé, "
-                                      "il sera reversésur votre compte Mobile Money.",
+                                      "il sera reverser votre compte CotiZ.",
                                       style: TextStyle(
                                         color: appColorSecond,
                                         fontSize: 16.sp,
@@ -148,6 +205,7 @@ class _HomeSettingPageState extends State<HomeSettingPage> {
                                         onPressed: () => Navigator.pop(context),
                                       ),
                                     ),
+                                    Gap(2.w),
                                     Expanded(
                                       child: SubmitButton(
                                         AppConstants.btnDelete,
@@ -166,9 +224,16 @@ class _HomeSettingPageState extends State<HomeSettingPage> {
                       },
                     );
                   },
-                  leading: Icon(
-                    Icons.delete_forever_outlined,
-                    color: Colors.red,
+                  leading: Container(
+                    padding: EdgeInsets.all(3.w),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withValues(alpha: .1),
+                      borderRadius: BorderRadius.circular(3.w),
+                    ),
+                    child: Icon(
+                      Icons.delete_forever_outlined,
+                      color: Colors.red,
+                    ),
                   ),
                   title: Text(
                     "Supprimer la cagnotte",

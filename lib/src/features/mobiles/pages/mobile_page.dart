@@ -1,5 +1,6 @@
 import 'package:cotiz/src/themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 
 import '../mobiles.dart';
@@ -20,161 +21,316 @@ class _MobilePageState extends State<MobilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("${widget.type!} via"),
-        backgroundColor: appWhite,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
-          child: ListView(
+          child: Column(
             children: [
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
-                child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MobileAmountPage(nom: 'Moi'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "${widget.type!} via",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
                       ),
-                    );
-                  },
-                  leading: ClipOval(
-                    child: Image.asset(
-                      "assets/images/orange.png",
-                      height: 4.h,
+                      child: Icon(Icons.close_outlined),
                     ),
                   ),
-                  title: Text(
-                    "Orange Money",
-                    style: TextStyle(
-                      color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "1% - Frais Opérateur",
-                    style: TextStyle(
-                      color: appColor,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColor,
-                    ),
-                  ),
-                ),
+                ],
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
-                child: ListTile(
-                  leading: ClipOval(
-                    child: Image.asset(
-                      "assets/images/wave.png",
-                      height: 4.h,
+              Gap(2.h),
+              Expanded(
+                child: ListView(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 2.w,
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "CZ",
+                              style: TextStyle(
+                                color: appBlack,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          "Mon compte CotiZ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: appBlack,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "Gratuit",
+                          style: TextStyle(
+                            color: appColorSecond,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Icon(Icons.navigate_next_outlined),
+                      ),
                     ),
-                  ),
-                  title: Text(
-                    "Wave",
-                    style: TextStyle(
-                      color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 2.w,
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/wave.png"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          "Wave",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: appBlack,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "1.5% - Frais",
+                          style: TextStyle(
+                            color: appColorSecond,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Icon(Icons.navigate_next_outlined),
+                      ),
                     ),
-                  ),
-                  subtitle: Text(
-                    "1% - Frais Opérateur",
-                    style: TextStyle(
-                      color: appColor,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.normal,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  MobileAmountPage(nom: 'Moi'),
+                            ),
+                          );
+                        },
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 2.w,
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/orange.png"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          "Orange Money",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: appBlack,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "1.5% - Frais",
+                          style: TextStyle(
+                            color: appColorSecond,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Icon(Icons.navigate_next_outlined),
+                      ),
                     ),
-                  ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColor,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 2.w,
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/mtn.jpg"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          "Mtn Money",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: appBlack,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "1.5% - Frais",
+                          style: TextStyle(
+                            color: appColorSecond,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Icon(Icons.navigate_next_outlined),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
-                child: ListTile(
-                  leading: ClipOval(
-                    child: Image.asset(
-                      "assets/images/mtn.jpg",
-                      height: 4.h,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 2.w,
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/moov.png"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          "Moov Money",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: appBlack,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "1.5% - Frais",
+                          style: TextStyle(
+                            color: appColorSecond,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Icon(Icons.navigate_next_outlined),
+                      ),
                     ),
-                  ),
-                  title: Text(
-                    "MTN MoMo",
-                    style: TextStyle(
-                      color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "1% - Frais Opérateur",
-                    style: TextStyle(
-                      color: appColor,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColor,
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
-                child: ListTile(
-                  leading: ClipOval(
-                    child: Image.asset(
-                      "assets/images/moov.png",
-                      height: 4.h,
-                    ),
-                  ),
-                  title: Text(
-                    "Moov Money",
-                    style: TextStyle(
-                      color: appBlack,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "1% - Frais Opérateur",
-                    style: TextStyle(
-                      color: appColor,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColor,
-                    ),
-                  ),
+                  ],
                 ),
               ),
             ],

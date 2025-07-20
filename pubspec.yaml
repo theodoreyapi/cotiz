@@ -31,6 +31,7 @@ dependencies:
   flutter_svg: ^2.2.0
   custom_navigation_bar: ^0.8.2
   fl_chart: ^1.0.0
+  super_tooltip: ^2.1.0
 
 dev_dependencies:
   flutter_test:

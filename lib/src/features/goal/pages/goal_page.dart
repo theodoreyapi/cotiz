@@ -156,7 +156,7 @@ class _GoalPageState extends State<GoalPage> {
                               radius: 20,
                               backgroundColor: Colors.green.withValues(alpha: .3),
                               child: Text(
-                                "50%",
+                                "60%",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14.sp,

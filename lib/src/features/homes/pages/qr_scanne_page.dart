@@ -33,64 +33,91 @@ class _QrScannePageState extends State<QrScannePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Scanner le QR Code"),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-              overlay: QrScannerOverlayShape(
-                overlayColor: appColor.withValues(alpha: .8),
-                borderColor: appWhite,
-                borderRadius: 3.w,
-                borderLength: 30,
-                borderWidth: 8,
-                cutOutSize: 300,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: EdgeInsets.all(3.w),
-              child: Column(
+      backgroundColor: appColorFond,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(3.w),
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Placez le QR code dans le cadre pour scanner",
-                    style: TextStyle(fontSize: 16.sp),
-                  ),
-                  Gap(2.h),
-                  FloatingActionButton(
-                    elevation: 0,
-                    heroTag: 'flash',
-                    backgroundColor: appColor,
-                    foregroundColor: Colors.white,
-                    shape: CircleBorder(),
-                    onPressed: _toggleFlash,
-                    child: Icon(
-                      isFlashOn
-                          ? Icons.flash_off_outlined
-                          : Icons.flash_on_outlined,
+                    "Scanne",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
                     ),
                   ),
-                  Center(
-                    child: (result != null)
-                        ? null
-                        : TextButton(
-                            onPressed: () {},
-                            child: Text("Entrer le code manuellement"),
-                          ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.close_outlined),
+                    ),
                   ),
                 ],
               ),
-            ),
-          )
-        ],
+              Gap(2.h),
+              Expanded(
+                flex: 5,
+                child: QRView(
+                  key: qrKey,
+                  onQRViewCreated: _onQRViewCreated,
+                  overlay: QrScannerOverlayShape(
+                    overlayColor: appColorFond.withValues(alpha: .8),
+                    borderColor: appWhite,
+                    borderRadius: 3.w,
+                    borderLength: 30,
+                    borderWidth: 8,
+                    cutOutSize: 300,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(3.w),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Placez le QR code dans le cadre pour scanner",
+                        style: TextStyle(fontSize: 16.sp),
+                      ),
+                      Gap(2.h),
+                      FloatingActionButton(
+                        elevation: 0,
+                        heroTag: 'flash',
+                        backgroundColor: appBlack,
+                        foregroundColor: Colors.white,
+                        shape: CircleBorder(),
+                        onPressed: _toggleFlash,
+                        child: Icon(
+                          isFlashOn
+                              ? Icons.flash_off_outlined
+                              : Icons.flash_on_outlined,
+                        ),
+                      ),
+                      Center(
+                        child: (result != null)
+                            ? null
+                            : TextButton(
+                                onPressed: () {},
+                                child: Text("Entrer le code manuellement"),
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

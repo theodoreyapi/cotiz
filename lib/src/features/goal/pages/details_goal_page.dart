@@ -2,7 +2,9 @@ import 'package:cotiz/src/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
+
+import '../../../../constants/constants.dart';
+import '../../../widgets/widgets.dart';
 
 class DetailsGoalPage extends StatefulWidget {
   const DetailsGoalPage({super.key});
@@ -12,8 +14,8 @@ class DetailsGoalPage extends StatefulWidget {
 }
 
 class _DetailsGoalPageState extends State<DetailsGoalPage> {
-  final double savedAmount = 3000;
-  final double targetAmount = 5000;
+  final double savedAmount = 3000000;
+  final double targetAmount = 5000000;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,8 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
         child: Padding(
           padding: EdgeInsets.all(4.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -38,6 +42,18 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                   ),
                   Spacer(),
                   GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.person_add_alt_1_outlined),
+                    ),
+                  ),
+                  Gap(2.w),
+                  GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
                       padding: EdgeInsets.all(4.w),
@@ -50,7 +66,24 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                   ),
                 ],
               ),
-              Gap(2.h),
+              Gap(1.h),
+              Container(
+                padding: EdgeInsets.all(3.w),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                ),
+                child: Text(
+                  "Ecole pour les enfants".toUpperCase(),
+                  style: TextStyle(
+                    color: appBlack,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Gap(1.h),
               Container(
                 decoration: BoxDecoration(
                   color: appWhite,
@@ -61,36 +94,12 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: CircularProgressIndicator(
-                              value: 0.5,
-                              strokeWidth: 2,
-                            ),
-                          ),
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundColor: Colors.green.withValues(alpha: .3),
-                            child: Text(
-                              "50%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       Row(
                         children: [
                           Icon(Icons.home, color: Colors.orange),
                           SizedBox(width: 8),
                           Text(
-                            'Buy a Home',
+                            'École',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
@@ -98,63 +107,53 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                           Icon(Icons.more_vert),
                         ],
                       ),
-                      SfRadialGauge(
-                        axes: <RadialAxis>[
-                          RadialAxis(
-                            startAngle: 0,
-                            endAngle: 0,
-                            minimum: 0,
-                            maximum: 100,
-                            showLabels: false,
-                            showTicks: false,
-                            axisLineStyle: AxisLineStyle(
-                              thickness: 0.2,
-                              cornerStyle: CornerStyle.bothFlat,
-                              color: Colors.grey.shade300,
-                              thicknessUnit: GaugeSizeUnit.factor,
+                      Gap(2.h),
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            width: 220,
+                            height: 220,
+                            child: CircularProgressIndicator(
+                              value: 0.6,
+                              strokeWidth: 8,
                             ),
-                            pointers: <GaugePointer>[
-                              RangePointer(
-                                value: percentage,
-                                width: 0.2,
-                                color: Colors.orange,
-                                cornerStyle: CornerStyle.bothCurve,
-                                sizeUnit: GaugeSizeUnit.factor,
-                              ),
-                            ],
-                            annotations: <GaugeAnnotation>[
-                              GaugeAnnotation(
-                                positionFactor: 0.1,
-                                angle: 90,
-                                widget: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      '\$${savedAmount.toInt()} Saved',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      '${percentage.toStringAsFixed(0)}%',
-                                      style: TextStyle(
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Target • \$${targetAmount.toInt()}',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ],
+                          ),
+                          CircleAvatar(
+                            radius: 103,
+                            backgroundColor: Colors.green.withValues(alpha: .3),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${savedAmount.toInt()} Fcfa \néconomisés',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: appBlack,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              )
-                            ],
+                                Text(
+                                  '${percentage.toStringAsFixed(0)}%',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 23.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: appBlack,
+                                  ),
+                                ),
+                                Text(
+                                  'Objectif • \n${targetAmount.toInt()} Fcfa',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: appGrey,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -165,22 +164,36 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("15 Apr",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Text("Start",
-                                    style: TextStyle(color: Colors.grey)),
+                                Text(
+                                  "15 Apr",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "Début",
+                                  style: TextStyle(
+                                    color: appGrey,
+                                  ),
+                                ),
                               ],
                             ),
                             Spacer(),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text("15 May",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Text("End",
-                                    style: TextStyle(color: Colors.grey)),
+                                Text(
+                                  "15 May",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "Fin",
+                                  style: TextStyle(
+                                    color: appGrey,
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -190,19 +203,51 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                   ),
                 ),
               ),
+              Gap(1.h),
+              Row(
+                children: [
+                  Expanded(
+                    child: SubmitButton(
+                      "Cotiser",
+                      fontSize: 16.sp,
+                      onPressed: () async {},
+                    ),
+                  ),
+                  Gap(1.w),
+                  Expanded(
+                    child: SubmitButton(
+                      "Encaisser",
+                      fontSize: 16.sp,
+                      couleur: appBlack,
+                      textcouleur: appWhite,
+                      onPressed: () async {},
+                    ),
+                  ),
+                ],
+              ),
               Gap(2.h),
+              Text(
+                "Activités",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17.sp,
+                ),
+              ),
               Expanded(
                 child: ListView(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(3.w),
+                      margin: EdgeInsets.only(bottom: 1.h),
                       decoration: BoxDecoration(
                         color: appWhite,
                         borderRadius: BorderRadius.circular(3.w),
                       ),
                       child: ListTile(
                         contentPadding: EdgeInsets.symmetric(
-                            horizontal: 8.0, vertical: 0.0),
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
                         minVerticalPadding: 0.0,
                         horizontalTitleGap: 8.0,
                         onTap: () {},
@@ -210,40 +255,86 @@ class _DetailsGoalPageState extends State<DetailsGoalPage> {
                           padding: EdgeInsets.all(3.w),
                           decoration: BoxDecoration(
                             color: appColorFond,
-                            shape: BoxShape.circle,
+                            borderRadius: BorderRadius.circular(3.w),
                           ),
                           child: Icon(
-                            Icons.account_balance_wallet_outlined,
+                            Icons.savings_outlined,
                             color: appBlack,
                           ),
                         ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Rechargement",
-                              style: TextStyle(
-                                color: appBlack,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "3 min",
-                              style: TextStyle(
-                                color: appGrey,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        title: Text(
+                          "Cotiser",
+                          style: TextStyle(
+                            color: appBlack,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         subtitle: Text(
-                          "Votre compte a été recharge de 5 000 Fcfa avec succès",
+                          "19 juil, 2025",
                           style: TextStyle(
                             color: appGrey,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Text(
+                          "+25 000 Fcfa",
+                          style: TextStyle(
+                            color: appBlack,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 0.0,
+                        ),
+                        minVerticalPadding: 0.0,
+                        horizontalTitleGap: 8.0,
+                        onTap: () {},
+                        leading: Container(
+                          padding: EdgeInsets.all(3.w),
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Icon(
+                            Icons.point_of_sale_outlined,
+                            color: appBlack,
+                          ),
+                        ),
+                        title: Text(
+                          "Encaisser",
+                          style: TextStyle(
+                            color: appBlack,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "19 juil, 2025",
+                          style: TextStyle(
+                            color: appGrey,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        trailing: Text(
+                          "-25 000 Fcfa",
+                          style: TextStyle(
+                            color: appBlack,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
