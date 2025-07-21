@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../constants/constants.dart';
@@ -59,16 +60,40 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appColor,
-      body: Center(
-        child: Text(
-          AppConstants.appName,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: appBlack,
-            fontSize: 30.sp,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.normal,
-          ),
+      body: Padding(
+        padding: EdgeInsets.all(4.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacer(),
+            Center(
+              child: Text(
+                AppConstants.appName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+            ),
+            Spacer(),
+            Center(
+              child: Text(
+                AppConstants.appNameDesc,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.normal,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+            ),
+            Gap(2.h),
+          ],
         ),
       ),
     );

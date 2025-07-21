@@ -2,6 +2,10 @@ class AppConstants {
   AppConstants._();
 
   static const appName = "CotiZ";
+  static const appNameDesc = "CotiZ est une application mobile qui aide les "
+      "utilisateurs à gérer, épargner et faire fructifier leur argent grâce à "
+      "des fonctions bancaires intelligentes et des outils "
+      "financiers personnalisés.";
 
   static const btnLogin = "Se connecter";
   static const btnNext = "Commençons";

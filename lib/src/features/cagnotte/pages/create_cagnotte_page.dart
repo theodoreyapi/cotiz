@@ -65,11 +65,7 @@ class _CreateCagnottePageState extends State<CreateCagnottePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
-      appBar: AppBar(
-        title: Text("Créer une cagnotte"),
-        centerTitle: true,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -80,6 +76,31 @@ class _CreateCagnottePageState extends State<CreateCagnottePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Créer une cagnotte",
+                        style: TextStyle(
+                          color: appBlack,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.sp,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: EdgeInsets.all(4.w),
+                          decoration: BoxDecoration(
+                            color: appWhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(Icons.close_outlined),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap(2.h),
                   Text("Titre de la cagnotte"),
                   InputText(
                     hintText: "Ex: Anniversaire de Ketura",

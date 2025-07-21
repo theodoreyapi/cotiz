@@ -18,11 +18,7 @@ class _DetailPretPageState extends State<DetailPretPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
-      appBar: AppBar(
-        title: Text("Détails prêt"),
-        centerTitle: true,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -31,6 +27,31 @@ class _DetailPretPageState extends State<DetailPretPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Détails prêt",
+                      style: TextStyle(
+                        color: appBlack,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        padding: EdgeInsets.all(4.w),
+                        decoration: BoxDecoration(
+                          color: appWhite,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.close_outlined),
+                      ),
+                    ),
+                  ],
+                ),
+                Gap(2.h),
                 Text(
                   "Montant demandé",
                   style: TextStyle(fontSize: 16.sp, color: Colors.black54),

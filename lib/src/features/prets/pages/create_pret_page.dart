@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
+import 'package:super_tooltip/super_tooltip.dart';
 
 import '../../../../constants/constants.dart';
 import '../../../themes/themes.dart';
@@ -18,6 +19,7 @@ class CreatePretPage extends StatefulWidget {
 }
 
 class _CreatePretPageState extends State<CreatePretPage> {
+  final _controller = SuperTooltipController();
   final _formKey = GlobalKey<FormState>();
 
   final FocusNode _focusNode = FocusNode();
@@ -82,12 +84,7 @@ class _CreatePretPageState extends State<CreatePretPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
-      appBar: AppBar(
-        title: Text("Demande de prêt"),
-        centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.info_outline))],
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -98,6 +95,65 @@ class _CreatePretPageState extends State<CreatePretPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Demande de prêt",
+                        style: TextStyle(
+                          color: appBlack,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.sp,
+                        ),
+                      ),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () async {
+                          await _controller.showTooltip();
+                        },
+                        child: SuperTooltip(
+                          constraints: BoxConstraints(maxWidth: 350),
+                          shadowColor: appGrey,
+                          backgroundColor: appWhite,
+                          showDropBoxFilter: true,
+                          showBarrier: true,
+                          controller: _controller,
+                          content: Text(
+                            AppConstants.txtLoren,
+                            softWrap: true,
+                            style: TextStyle(
+                              color: appGrey,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(4.w),
+                            decoration: BoxDecoration(
+                              color: appWhite,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.info_outline,
+                              color: appBlack,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Gap(2.w),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: EdgeInsets.all(4.w),
+                          decoration: BoxDecoration(
+                            color: appWhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(Icons.close_outlined),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap(2.h),
                   Text(
                     "Montant souhaité",
                     style: TextStyle(fontSize: 16.sp, color: Colors.black54),

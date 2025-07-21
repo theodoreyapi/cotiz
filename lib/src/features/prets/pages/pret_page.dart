@@ -35,66 +35,76 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
-      appBar: AppBar(
-        title: Text("Prêt P2P"),
-        centerTitle: true,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(3.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: EdgeInsets.all(3.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.w),
-                  color: appColor.withValues(alpha: .2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Prêt P2P",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.close_outlined),
+                    ),
+                  ),
+                ],
+              ),
+              Gap(2.h),
+              Text(
+                "Prêt",
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.normal,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Prêt",
-                      style: TextStyle(
-                        color: appBlack,
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      "15 000 000 FCFA",
-                      style: TextStyle(
-                        color: appBlack,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "Demandé: 20 000 000 FCFA",
-                      style: TextStyle(
-                        color: appBlack,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Gap(2.h),
-                    SubmitButtonIcon(
-                      AppConstants.btnCreatePret,
-                      colorIcon: appWhite,
-                      icone: "assets/svg/add.svg",
-                      onPressed: () async {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreatePretPage(),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+              ),
+              Text(
+                "15 000 000 FCFA",
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
+              Text(
+                "Demandé: 20 000 000 FCFA",
+                style: TextStyle(
+                  color: appBlack,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              Gap(2.h),
+              SubmitButtonIcon(
+                AppConstants.btnCreatePret,
+                colorIcon: appBlack,
+                icone: "assets/svg/add.svg",
+                onPressed: () async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CreatePretPage(),
+                    ),
+                  );
+                },
               ),
               Gap(2.h),
               InputText(
@@ -105,32 +115,27 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                 validatorMessage: "Veuillez saisir un titre",
               ),
               Gap(1.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColor.withValues(alpha: .3),
-                  borderRadius: BorderRadius.all(Radius.circular(3.w)),
+              TabBar(
+                controller: _tabController,
+                indicatorColor: Colors.transparent,
+                dividerColor: Colors.transparent,
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3.w),
+                  color: appColor,
                 ),
-                child: TabBar(
-                  controller: _tabController,
-                  indicatorColor: Colors.transparent,
-                  dividerColor: Colors.transparent,
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3.w),
-                    color: appColor,
-                  ),
-                  labelColor: appWhite,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  unselectedLabelColor: appColor,
-                  isScrollable: true,
-                  tabAlignment: TabAlignment.start,
-                  tabs: <Widget>[
-                    Tab(text: "Tous"),
-                    Tab(text: "En cours"),
-                    Tab(text: "Nouveau"),
-                    Tab(text: "Financé"),
-                  ],
-                ),
+                labelColor: appBlack,
+                indicatorSize: TabBarIndicatorSize.tab,
+                unselectedLabelColor: appGrey,
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                tabs: <Widget>[
+                  Tab(text: "Tous"),
+                  Tab(text: "En cours"),
+                  Tab(text: "Nouveau"),
+                  Tab(text: "Financé"),
+                ],
               ),
+              Gap(1.h),
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
@@ -148,13 +153,10 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                           },
                           child: Container(
                             padding: EdgeInsets.all(3.w),
-                            margin: EdgeInsets.only(bottom: 2.w),
+                            margin: EdgeInsets.only(bottom: 1.w),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(3.w),
                               color: appWhite,
-                              border: Border.all(
-                                color: Colors.grey,
-                              ),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -162,7 +164,9 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                               children: [
                                 ListTile(
                                   contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 8.0, vertical: 0.0),
+                                    horizontal: 8.0,
+                                    vertical: 0.0,
+                                  ),
                                   minVerticalPadding: 0.0,
                                   horizontalTitleGap: 8.0,
                                   title: Text(
@@ -251,9 +255,6 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3.w),
                             color: appWhite,
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -283,12 +284,12 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                                   padding: EdgeInsets.all(3.w),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.w),
-                                    color: Colors.green[200],
+                                    color: appColorSecond.withValues(alpha: .3),
                                   ),
                                   child: Text(
                                     "Nouveau",
                                     style: TextStyle(
-                                      color: Colors.green,
+                                      color: appColorSecond,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -349,9 +350,6 @@ class _PretPageState extends State<PretPage> with TickerProviderStateMixin {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3.w),
                             color: appWhite,
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,

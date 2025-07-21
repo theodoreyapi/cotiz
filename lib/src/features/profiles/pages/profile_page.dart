@@ -25,28 +25,29 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  padding: EdgeInsets.all(4.w),
-                  decoration: BoxDecoration(
-                    color: appWhite,
-                    borderRadius: BorderRadius.circular(3.w),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Paramètres",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.arrow_back_outlined,
-                    color: appBlack,
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.close_outlined),
+                    ),
                   ),
-                ),
-              ),
-              Gap(2.h),
-              Text(
-                "Paramètres",
-                style: TextStyle(
-                  color: appBlack,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.sp,
-                ),
+                ],
               ),
               Gap(2.h),
               Container(

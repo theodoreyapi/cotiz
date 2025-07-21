@@ -17,10 +17,37 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
+  final PageController _controller = PageController();
+  int _currentPage = 0;
+
+  final List<Map<String, String>> _onboardingData = [
+    {
+      'title': 'Gestion simplifiée',
+      'desc':
+          "Gérer votre argent facilement avec notre interface intuitive et simplifiée",
+      'image': 'assets/svg/wallett.svg',
+    },
+    {
+      'title': 'Transaction',
+      'desc': "Envoyez et recevez de l'argent en temps réel",
+      'image': 'assets/svg/transaction.svg',
+    },
+    {
+      'title': 'Prêt entre particuliers',
+      'desc': "Empruntez ou prêtez de l'argent en toute sécurité",
+      'image': 'assets/svg/pret.svg',
+    },
+    {
+      'title': 'Cagnotte',
+      'desc': "Commencez à collecter facilement",
+      'image': 'assets/svg/pret.svg',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appWhite,
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(3.w),
@@ -28,218 +55,94 @@ class _IntroPageState extends State<IntroPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                AppConstants.appName,
-                style: TextStyle(
-                  color: appBlack,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.sp,
-                ),
-              ),
-              Text(
-                "L'application qui connecte des personnes",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.sp,
-                ),
-              ),
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: ListTile(
-                  leading: SvgPicture.asset("assets/svg/wallett.svg"),
-                  title: Text(
-                    "Gestion simplifiée",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Gérer votre argent facilement avec notre interface intuitive et simplifiée",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-              Gap(2.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: ListTile(
-                  leading: SvgPicture.asset("assets/svg/transaction.svg"),
-                  title: Text(
-                    "Transaction",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Envoyez et recevez de l'argent en temps réel",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-              Gap(2.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: ListTile(
-                  leading: SvgPicture.asset("assets/svg/pret.svg"),
-                  title: Text(
-                    "Prêt entre particuliers",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Empruntez ou prêtez de l'argent en toute sécurité",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-              Gap(2.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: ListTile(
-                  leading: SvgPicture.asset("assets/svg/pret.svg"),
-                  title: Text(
-                    "Cagnotte",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Commencez à collecter facilement",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-              Spacer(),
-              /* Gap(2.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: ListTile(
-                  leading: SvgPicture.asset("assets/svg/projet.svg"),
-                  title: Text(
-                    "Financement de projets",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Participez au financement de projets innovants",
-                    style: TextStyle(
-                      color: appColorText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-             Gap(2.h),
-              Container(
-                padding: EdgeInsets.all(3.w),
-                decoration: BoxDecoration(
-                  color: appColorFond,
-                  borderRadius: BorderRadius.circular(3.w),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Sécurité garantie",
-                      style: TextStyle(
-                        color: appColorText,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
+              Expanded(
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: _onboardingData.length,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    final item = _onboardingData[index];
+                    return Padding(
+                      padding: EdgeInsets.all(4.w),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item['title']!,
+                            style: TextStyle(
+                              fontSize: 24.sp,
+                              color: appBlack,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Gap(1.h),
+                          Text(
+                            item['desc']!,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: appGrey,
+                            ),
+                          ),
+                          Spacer(),
+                          Center(
+                            child: SvgPicture.asset(
+                              item['image']!,
+                              height: 200,
+                            ),
+                          ),
+                          Spacer(),
+                        ],
                       ),
-                    ),
-                    Gap(1.h),
-                    BulletPoint(text: 'Authentification forte'),
-                    BulletPoint(text: 'Transactions cryptées'),
-                    BulletPoint(text: 'Protection des données'),
-                    BulletPoint(text: 'Conformité RGPD'),
-                  ],
+                    );
+                  },
                 ),
-              ),*/
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 110,
+                    child: CancelButton(
+                      "Passer",
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                    ),
+                  ),
+                  FloatingActionButton(
+                    elevation: 0,
+                    backgroundColor: appWhite,
+                    onPressed: () {
+                      if (_currentPage < _onboardingData.length - 1) {
+                        _controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      }
+                    },
+                    child: Icon(
+                      _currentPage == _onboardingData.length - 1
+                          ? Icons.check_outlined
+                          : Icons.arrow_forward_outlined,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(3.w),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: SubmitButton(
-                AppConstants.btnRegister,
-                onPressed: () async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegisterPage(),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Gap(2.w),
-            Expanded(
-              child: CancelButton(
-                AppConstants.btnLogin,
-                onPressed: () async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginPage(),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
         ),
       ),
     );

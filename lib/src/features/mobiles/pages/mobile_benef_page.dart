@@ -19,10 +19,7 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Bénéficiaire"),
-        backgroundColor: appWhite,
-      ),
+      backgroundColor: appColorFond,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(4.w),
@@ -30,9 +27,33 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Bénéficiaire",
+                    style: TextStyle(
+                      color: appBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.close_outlined),
+                    ),
+                  ),
+                ],
+              ),
+              Gap(2.h),
               InputText(
                 hintText: "Nom ou Numéro de téléphone",
-                colorFille: appWhite,
                 keyboardType: TextInputType.text,
                 controller: number,
                 prefixIcon: Icon(
@@ -41,14 +62,34 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                 ),
                 validatorMessage: "Veuillez saisir numéro ou nom",
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
+              Gap(2.h),
+              Container(
+                margin: EdgeInsets.only(bottom: 1.h),
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
                 child: ListTile(
                   onTap: () {},
-                  leading: Icon(
-                    Icons.numbers_outlined,
-                    color: appColorSecond,
+                  leading: Container(
+                    padding: EdgeInsets.all(2.w),
+                    height: 5.h,
+                    width: 5.h,
+                    decoration: BoxDecoration(
+                      color: appColorFond,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.numbers_outlined,
+                      color: appColorSecond,
+                    ),
                   ),
                   title: Text(
                     "Saisir numéro de téléphone",
@@ -61,23 +102,30 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                   subtitle: Text(
                     "Si le numéro ne se trouve pas dans vos contacts",
                     style: TextStyle(
-                      color: appColor,
+                      color: appGrey,
                       fontWeight: FontWeight.normal,
                       fontSize: 12.sp,
                     ),
                   ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColorSecond,
-                    ),
+                  trailing: Icon(
+                    Icons.navigate_next_outlined,
+                    color: appBlack,
                   ),
                 ),
               ),
-              Card(
-                surfaceTintColor: appWhite,
-                color: appWhite,
+              Container(
+                margin: EdgeInsets.only(bottom: 1.h),
+                decoration: BoxDecoration(
+                  color: appWhite,
+                  borderRadius: BorderRadius.circular(3.w),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
@@ -89,7 +137,14 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                       ),
                     );
                   },
-                  leading: ClipOval(
+                  leading: Container(
+                    padding: EdgeInsets.all(2.w),
+                    height: 5.h,
+                    width: 5.h,
+                    decoration: BoxDecoration(
+                      color: appColorFond,
+                      shape: BoxShape.circle,
+                    ),
                     child: FlutterLogo(),
                   ),
                   title: Text(
@@ -103,17 +158,14 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                   subtitle: Text(
                     "05 85 83 16 47",
                     style: TextStyle(
-                      color: appColor,
+                      color: appGrey,
                       fontSize: 13.sp,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  trailing: CircleAvatar(
-                    radius: 15,
-                    child: Icon(
-                      Icons.navigate_next_outlined,
-                      color: appColor,
-                    ),
+                  trailing: Icon(
+                    Icons.navigate_next_outlined,
+                    color: appBlack,
                   ),
                 ),
               ),
@@ -122,9 +174,19 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
               Expanded(
                 child: ListView(
                   children: [
-                    Card(
-                      surfaceTintColor: appWhite,
-                      color: appWhite,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 1.h),
+                      decoration: BoxDecoration(
+                        color: appWhite,
+                        borderRadius: BorderRadius.circular(3.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.05),
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
                       child: ListTile(
                         onTap: () {
                           Navigator.push(
@@ -136,10 +198,16 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                             ),
                           );
                         },
-                        leading: ClipOval(
+                        leading: Container(
+                          padding: EdgeInsets.all(2.w),
+                          height: 5.h,
+                          width: 5.h,
+                          decoration: BoxDecoration(
+                            color: appColorFond,
+                            shape: BoxShape.circle,
+                          ),
                           child: Icon(
                             Icons.person_pin,
-                            size: 40,
                           ),
                         ),
                         title: Text(
@@ -153,17 +221,14 @@ class _MobileBenefPageState extends State<MobileBenefPage> {
                         subtitle: Text(
                           "Numéro de téléphone",
                           style: TextStyle(
-                            color: appColor,
+                            color: appGrey,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        trailing: CircleAvatar(
-                          radius: 15,
-                          child: Icon(
-                            Icons.navigate_next_outlined,
-                            color: appColor,
-                          ),
+                        trailing: Icon(
+                          Icons.navigate_next_outlined,
+                          color: appBlack,
                         ),
                       ),
                     ),
